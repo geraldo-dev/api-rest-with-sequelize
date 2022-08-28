@@ -28,5 +28,20 @@ module.exports = {
           } catch (error) {
             res.status(500).json({ error })
           }
+    },
+    async createProduct (req, res){
+      const { name, description, price, active } = req.body
+        try {
+          //validações
+            
+            const product = await Product.create({
+               name, description, price, active 
+              })
+            
+            res.status(201).json('new registered product')
+
+          } catch (error) {
+            res.status(500).json({ error })
+          }
     }
 }
