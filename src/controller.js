@@ -60,8 +60,22 @@ module.exports = {
         
         res.status(200).json("product updated!!")
       } catch (error) {
-        console.log(error)
         res.status(400).json({ error })
       }
     },
+    async deleteProduct(req, res) {
+      try {
+        const { id } = req.params
+        const product = await Product.findByPk(id)
+
+        if(!product){
+          return res.status(404).json({'message':'product not found'})
+        }
+        await Product.destroy({ where: { 'id':id } })
+        
+        res.status(200).json("product delete!!")
+      } catch (error) {
+        res.status(400).json({ error })
+      }
+    }
 }
