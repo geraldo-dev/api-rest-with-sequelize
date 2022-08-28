@@ -34,14 +34,34 @@ module.exports = {
         try {
           //validações
             
-            const product = await Product.create({
-               name, description, price, active 
-              })
+            await Product.create({ name, description, price, active })
             
             res.status(201).json('new registered product')
 
           } catch (error) {
             res.status(500).json({ error })
           }
-    }
+    },
+    async updateProduct(req, res) {
+      try {
+        const { name, description, price, active } = req.body
+        const { id } = req.params
+
+        const product = await Product.findByPk(id)
+
+        if(!product){
+          return res.status(404).json({'message':'product not found'})
+        }
+
+        await Product.update(
+          { name, description, price, active }, {
+          where: { 'id':id }
+        })
+        
+        res.status(200).json("product updated!!")
+      } catch (error) {
+        console.log(error)
+        res.status(400).json({ error })
+      }
+    },
 }
