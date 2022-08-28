@@ -5,15 +5,12 @@ module.exports = {
     await queryInterface.bulkInsert('products', [
     {
       name: 'azzor',
-      description: 'alimento para refeições diarias',
-      price: 12.00
+      description: 'alimento para refeições diarias'
     },
     {
       name: 'feijão',
-      description: 'alimento que acompanha os protos principais',
-      price: 12.00
-    }
-  ], {});
+      description: 'alimento que acompanha os protos principais'
+    }], {});
   },
 
   async down (queryInterface, Sequelize) {

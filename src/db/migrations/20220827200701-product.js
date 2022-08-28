@@ -4,19 +4,12 @@ module.exports = {
   async up (queryInterface, Sequelize) {
     await queryInterface.createTable('products', 
     { 
-      id:{
+      id: {
         type: Sequelize.DataTypes.INTEGER,
         autoIncrement: true,
-        primaryKey: true
-      },
+        primaryKey: true},
       name: Sequelize.DataTypes.STRING,
-      description: Sequelize.DataTypes.STRING,
-      price: Sequelize.DataTypes.FLOAT,
-      active: {
-        type: Sequelize.DataTypes.BOOLEAN,
-        defaultValue: false,
-        allowNull: false
-      }
+      description: Sequelize.DataTypes.STRING
     });
 
   },
