@@ -13,11 +13,17 @@ module.exports = {
           }
     },
     async getByIdProduct (req, res){
+      const { id } = req.params
         try {
             
-            const products = await Product.findAll()
+            const product = await Product.findByPk(id)
+            console.log(product)
+
+            if(!product){
+              return res.status(404).json({'message':'product not found'})
+            }
             
-            res.status(200).json({'products':products})
+            res.status(200).json({'product':product})
 
           } catch (error) {
             res.status(500).json({ error })
