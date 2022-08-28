@@ -9,7 +9,9 @@ module.exports = {
         autoIncrement: true,
         primaryKey: true},
       name: Sequelize.DataTypes.STRING,
-      description: Sequelize.DataTypes.STRING
+      description: Sequelize.DataTypes.STRING,
+      price: Sequelize.DataTypes.REAL,
+      active: Sequelize.DataTypes.BOOLEAN
     });
 
   },
